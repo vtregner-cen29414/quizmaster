@@ -41,6 +41,14 @@ Then('I see the quiz create button inside the {string} section', async function 
     await this.workspacePage.expectQuizCreateButtonInSection(section)
 })
 
+Then('I do not see the quiz create button', async function () {
+    await this.workspacePage.expectQuizCreateButtonHidden()
+})
+
+Then('I see the question create button inside the {string} section', async function (section: string) {
+    await this.workspacePage.expectQuestionCreateButtonInSection(section)
+})
+
 Then('I do not see the question create button', async function () {
     await this.workspacePage.expectQuestionCreateButtonHidden()
 })

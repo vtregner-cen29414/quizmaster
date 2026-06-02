@@ -146,6 +146,10 @@ export class WorkspacePage {
 
     expectQuizCreateButtonInSection = (section: string) =>
         expect(this.sectionLocator(section).locator('#create-quiz')).toBeVisible()
+    expectQuizCreateButtonHidden = () => expect(this.page.locator('#create-quiz')).toBeHidden()
+
+    expectQuestionCreateButtonInSection = (section: string) =>
+        expect(this.sectionLocator(section).locator('#create-question')).toBeVisible()
     expectQuestionCreateButtonHidden = () => expect(this.page.locator('#create-question')).toBeHidden()
 
     // ── Quiz list (gated → activate Quizzes tab first) ──
