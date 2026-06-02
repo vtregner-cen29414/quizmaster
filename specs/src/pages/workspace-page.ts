@@ -135,8 +135,18 @@ export class WorkspacePage {
 
     // ── Create new question / quiz ───────────────────
 
-    createNewQuestion = () => this.page.locator('#create-question').click()
-    createNewQuiz = () => this.page.locator('#create-quiz').click()
+    createNewQuestion = async () => {
+        await this.showQuestions()
+        await this.page.locator('#create-question').click()
+    }
+    createNewQuiz = async () => {
+        await this.showQuizzes()
+        await this.page.locator('#create-quiz').click()
+    }
+
+    expectQuizCreateButtonInSection = (section: string) =>
+        expect(this.sectionLocator(section).locator('#create-quiz')).toBeVisible()
+    expectQuestionCreateButtonHidden = () => expect(this.page.locator('#create-question')).toBeHidden()
 
     // ── Quiz list (gated → activate Quizzes tab first) ──
 
