@@ -57,7 +57,7 @@ class AiAssistantEmbeddingDuplicateAvoidanceTest {
         assumeTrue(!apiToken.isBlank(), "ai.token not configured");
 
         Workspace workspace = workspaceWithEmbeddedQuestion(EXISTING_QUESTION);
-        Question editedQuestion = questionRepository.findByWorkspaceGuid(workspace.getGuid()).getFirst();
+        Question editedQuestion = questionRepository.findByWorkspaceGuidOrderByIdDesc(workspace.getGuid()).getFirst();
 
         QuestionResponse response = aiAssistantService.generateQuestion(
             "Improve this exact question without changing its meaning: " + EXISTING_QUESTION,

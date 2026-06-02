@@ -9,7 +9,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 public interface QuizRepository extends JpaRepository<Quiz, Integer> {
-    List<Quiz> findByWorkspaceGuid(String workspaceGuid);
+    List<Quiz> findByWorkspaceGuidOrderByIdDesc(String workspaceGuid);
 
     Optional<Quiz> findByIdAndWorkspaceGuid(Integer id, String workspaceGuid);
 

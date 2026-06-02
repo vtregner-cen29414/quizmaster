@@ -67,7 +67,7 @@ public class QuestionEmbeddingService {
         }
 
         return questionRepository
-            .findByWorkspaceGuid(workspaceGuid.strip())
+            .findByWorkspaceGuidOrderByIdDesc(workspaceGuid.strip())
             .stream()
             .filter(question -> excludedQuestionId == null || !excludedQuestionId.equals(question.getId()))
             .filter(this::hasUsableEmbedding)

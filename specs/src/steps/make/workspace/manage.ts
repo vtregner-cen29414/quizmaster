@@ -151,6 +151,14 @@ Then('I do not see quiz {string} in the workspace', async function (quizName: st
     await this.workspacePage.expectQuizNotVisible(quizName)
 })
 
+Then('I see quizzes in order: {string}, {string}, {string}', async function (a: string, b: string, c: string) {
+    await this.workspacePage.expectQuizzesInOrder([a, b, c])
+})
+
+Then('I see questions in order: {string}, {string}, {string}', async function (a: string, b: string, c: string) {
+    await this.workspacePage.expectQuestionsInOrder([a, b, c])
+})
+
 Then('I take quiz {string}', async function (quiz: string) {
     await this.workspacePage.takeQuiz(quiz)
 })

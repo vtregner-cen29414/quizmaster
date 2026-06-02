@@ -9,7 +9,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 public interface QuestionRepository extends JpaRepository<Question, Integer> {
-    List<Question> findByWorkspaceGuid(String guid);
+    List<Question> findByWorkspaceGuidOrderByIdDesc(String guid);
 
     Optional<Question> findByIdAndWorkspaceGuid(Integer id, String workspaceGuid);
 

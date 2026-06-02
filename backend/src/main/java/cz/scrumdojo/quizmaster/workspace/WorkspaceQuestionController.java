@@ -43,7 +43,7 @@ public class WorkspaceQuestionController {
     public ResponseEntity<List<QuestionListItem>> getWorkspaceQuestions(@PathVariable String workspaceGuid) {
         workspaceGuard.requireExists(workspaceGuid);
 
-        List<Question> questions = questionRepository.findByWorkspaceGuid(workspaceGuid);
+        List<Question> questions = questionRepository.findByWorkspaceGuidOrderByIdDesc(workspaceGuid);
         Set<Integer> questionIdsInQuizzes = quizRepository.findQuestionIdsInQuizzesByWorkspaceGuid(workspaceGuid);
 
         var items = questions

@@ -193,4 +193,22 @@ export class WorkspacePage {
         await this.showQuizzes()
         await expect(this.quizLocator(quiz)).not.toBeVisible()
     }
+
+    expectQuizzesInOrder = async (titles: string[]) => {
+        await this.showQuizzes()
+        const items = this.page.locator('.quiz-item')
+        await expect(items).toHaveCount(titles.length)
+        for (let i = 0; i < titles.length; i++) {
+            await expect(items.nth(i)).toContainText(titles[i])
+        }
+    }
+
+    expectQuestionsInOrder = async (titles: string[]) => {
+        await this.showQuestions()
+        const items = this.page.locator('.question-item')
+        await expect(items).toHaveCount(titles.length)
+        for (let i = 0; i < titles.length; i++) {
+            await expect(items.nth(i)).toContainText(titles[i])
+        }
+    }
 }

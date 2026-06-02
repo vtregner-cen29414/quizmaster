@@ -67,7 +67,7 @@ public class WorkspaceQuizController {
     public ResponseEntity<List<QuizListItem>> getWorkspaceQuizzes(@PathVariable String workspaceGuid) {
         workspaceGuard.requireExists(workspaceGuid);
 
-        List<Quiz> quizzes = quizRepository.findByWorkspaceGuid(workspaceGuid);
+        List<Quiz> quizzes = quizRepository.findByWorkspaceGuidOrderByIdDesc(workspaceGuid);
 
         var items = quizzes
             .stream()
