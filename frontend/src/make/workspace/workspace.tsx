@@ -66,15 +66,6 @@ export function WorkspacePage() {
                 </div>
             </section>
 
-            <div className="create-buttons">
-                <LinkButton
-                    label="Create Question"
-                    id="create-question"
-                    to={urls.workspaceQuestionNew(workspace.guid)}
-                />
-                <LinkButton label="Create Quiz" id="create-quiz" to={urls.workspaceQuizNew(workspace.guid)} />
-            </div>
-
             <div className="workspace-tabs" role="tablist" aria-label="Workspace sections">
                 <button
                     type="button"
@@ -98,7 +89,17 @@ export function WorkspacePage() {
 
             {activeTab === 'questions' && (
                 <section className="workspace-section workspace-section--questions">
-                    <ItemList title="My Questions">
+                    <ItemList
+                        title="My Questions"
+                        action={
+                            <LinkButton
+                                label="Create"
+                                icon="+"
+                                id="create-question"
+                                to={urls.workspaceQuestionNew(workspace.guid)}
+                            />
+                        }
+                    >
                         {hasQuestions ? (
                             questions.map((q, index) => (
                                 <QuestionItem
@@ -123,7 +124,17 @@ export function WorkspacePage() {
 
             {activeTab === 'quizzes' && (
                 <section className="workspace-section workspace-section--quizzes">
-                    <ItemList title="My Quizzes">
+                    <ItemList
+                        title="My Quizzes"
+                        action={
+                            <LinkButton
+                                label="Create"
+                                icon="+"
+                                id="create-quiz"
+                                to={urls.workspaceQuizNew(workspace.guid)}
+                            />
+                        }
+                    >
                         {hasQuizzes ? (
                             quizzes.map(quiz => (
                                 <QuizItem
